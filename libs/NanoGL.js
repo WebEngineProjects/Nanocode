@@ -1,3 +1,50 @@
+/*
+Documentação da Biblioteca NanoGl
+
+Introdução:
+A biblioteca NanoGl é uma ferramenta que facilita a criação dinâmica de elementos HTML usando JavaScript de forma simplificada. Ela oferece funções para criar botões, textos, imagens e manipular propriedades desses elementos de maneira rápida e eficiente.
+
+Inicialização:
+Antes de utilizar os comandos da biblioteca NanoGl, é necessário inicializá-la. Para isso, utilize o comando `init`.
+
+init
+
+Comandos Disponíveis:
+
+1. createButton nomeDoBotão - Cria um botão com o ID especificado ou um ID padrão caso não seja fornecido.
+
+createButton meuBotao
+
+2. createText novoTexto - Cria um texto com o ID especificado ou um ID padrão caso não seja fornecido.
+
+createText meuTexto
+
+3. createImage nomeDaImagem - Cria uma imagem com o ID especificado ou um ID padrão caso não seja fornecido.
+
+createImage minhaImagem
+
+4. setText nomeDoElemento : texto - Define o texto de um elemento. O parâmetro `nomeDoElemento` deve ser no formato "ID:texto".
+
+setText meuTexto : Olá, mundo!
+
+5. setSrc imagem.png - Define o atributo `src` de uma imagem. O parâmetro `imagem.png` deve ser no formato "ID:URL".
+
+setSrc minhaImagem : https://exemplo.com/imagem.jpg
+
+6. setWidth elemento : largura - Define a largura de um elemento. O parâmetro `elemento` deve ser no formato "ID:largura".
+
+setWidth meuBotao : 200
+
+7. setHeight elemento : altura - Define a altura de um elemento. O parâmetro `elemento` deve ser no formato "ID:altura".
+
+setHeight meuBotao : 200
+
+8. onClick elemento : codigo - Adiciona um evento de clique a um elemento. O parâmetro meuBotao deve ser no formato "ID:código".
+
+onClick meuBotao : echo Hello, World
+
+*/
+
 var NGL_ELEMENTS = [];
 
 tokens["init"] = ()=>{
