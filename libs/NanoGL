@@ -1,0 +1,104 @@
+var NGL_ELEMENTS = [];
+
+tokens["init"] = ()=>{
+  console.log("++openhtml");
+  document.body.style.userSelect = "none";
+  document.body.style.fontSyle = "Arial";
+  document.body.style.display = "flex";
+  document.body.style.flexDirection = "column";
+  document.body.style.alignItems = "start";
+  document.body.style.outline = "none";
+}
+
+tokens["createButton"] = (en="newButton")=>{
+  let btn = document.createElement("button");
+  btn.id = en.trim();
+  btn.innerText = math(en.trim());
+  btn.style.cursor = "pointer";
+  btn.style.background = "#ddd";
+  btn.style.padding = "5px 10px";
+  NGL_ELEMENTS.push(en.trim());
+  document.body.appendChild(btn);
+}
+
+tokens["createText"] = (en="newButton")=>{
+  let txt = document.createElement("span");
+  txt.id = en.trim();
+  txt.innerText = math(en.trim());
+  NGL_ELEMENTS.push(en.trim());
+  document.body.appendChild(txt);
+}
+
+tokens["createImage"] = (en="newButton")=>{
+  let img = document.createElement("img");
+  img.id = en.trim();
+  NGL_ELEMENTS.push(en.trim());
+  document.body.appendChild(img);
+}
+
+tokens["setText"] = (en)=>{
+  if(en.includes(":"))
+    {
+      let data = [];
+      data.push(en.substring(0, en.indexOf(":")));
+      data.push(en.substring(en.indexOf(":")+1, en.length));
+      
+      if(NGL_ELEMENTS.includes(data[0].trim())) document.getElementById((data[0].trim())).innerText = math(data[1].trim());
+    }else{
+      console.error("Error : missing ( : )");
+    }
+}
+
+tokens["setSrc"] = (en)=>{
+  if(en.includes(":"))
+    {
+      let data = [];
+      data.push(en.substring(0, en.indexOf(":")));
+      data.push(en.substring(en.indexOf(":")+1, en.length));
+      
+      if(NGL_ELEMENTS.includes(data[0].trim())) document.getElementById((data[0].trim())).src = math(data[1].trim());
+    }else{
+      console.error("Error : missing ( : )");
+    }
+}
+
+tokens["setWidth"] = (en)=>{
+  if(en.includes(":"))
+    {
+      let data = [];
+      data.push(en.substring(0, en.indexOf(":")));
+      data.push(en.substring(en.indexOf(":")+1, en.length));
+      
+      if(NGL_ELEMENTS.includes(data[0].trim())) document.getElementById((data[0].trim())).style.width = math(data[1].trim() + "px");
+    }else{
+      console.error("Error : missing ( : )");
+    }
+}
+
+tokens["setHeight"] = (en)=>{
+  if(en.includes(":"))
+    {
+      let data = [];
+      data.push(en.substring(0, en.indexOf(":")));
+      data.push(en.substring(en.indexOf(":")+1, en.length));
+      
+      if(NGL_ELEMENTS.includes(data[0].trim())) document.getElementById((data[0].trim())).style.height = math(data[1].trim() + "px");
+    }else{
+      console.error("Error : missing ( : )");
+    }
+}
+
+tokens["onClick"] = (en)=>{
+  if(en.includes(":"))
+    {
+      let data = [];
+      data.push(en.substring(0, en.indexOf(":")));
+      data.push(en.substring(en.indexOf(":")+1, en.length));
+      
+      if(NGL_ELEMENTS.includes(data[0].trim())) document.getElementById((data[0].trim())).addEventListener("click",(e)=>{
+        compile(math(data[1].trim()));
+      });
+    }else{
+      console.error("Error : missing ( : )");
+    }
+}
